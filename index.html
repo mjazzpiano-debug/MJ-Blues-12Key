@@ -6,7 +6,10 @@
 <title>MJ Blues 12 Key Practice</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box
+}
 
 body{
   margin:0;
@@ -87,14 +90,115 @@ button:disabled{
   cursor:not-allowed
 }
 
+
+/* =========================
+   코드 진행 버튼
+========================= */
+
+.progressionButtonWrap{
+  display:flex;
+  justify-content:center;
+  margin-top:18px
+}
+
+.progressionButton{
+  background:#f0f0f0;
+  color:#111;
+  border:1px solid #ddd;
+  padding:12px 20px;
+  font-size:15px
+}
+
+
+/* =========================
+   코드 진행표
+========================= */
+
+.progressionArea{
+  margin-top:18px;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:18px;
+  background:#fafafa
+}
+
+.progressionArea.hidden{
+  display:none
+}
+
+.progressionHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:15px
+}
+
+.progressionTitle{
+  font-size:17px;
+  font-weight:800
+}
+
+.progressionClose{
+  padding:8px 13px;
+  font-size:13px;
+  background:#e9e9e9
+}
+
+.progressionGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px
+}
+
+.progressionCell{
+  min-height:56px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:8px 4px;
+
+  font-size:14px;
+  font-weight:700;
+
+  white-space:nowrap
+}
+
+.barNumber{
+  color:#999;
+  font-size:10px;
+  margin-right:5px;
+  font-weight:400
+}
+
+.progressionInfo{
+  color:#888;
+  font-size:12px;
+  text-align:center;
+  margin-top:12px
+}
+
+
+/* =========================
+   설정
+========================= */
+
 .settings{
   margin-top:30px;
   border-top:1px solid #eee;
   padding-top:25px;
+
   display:flex;
   justify-content:center;
   gap:35px;
   flex-wrap:wrap;
+
   text-align:center
 }
 
@@ -121,6 +225,11 @@ select{
   font-size:15px
 }
 
+
+/* =========================
+   진행바
+========================= */
+
 .progress{
   height:7px;
   background:#eee;
@@ -134,6 +243,11 @@ select{
   width:0;
   background:#111
 }
+
+
+/* =========================
+   KEY 선택
+========================= */
 
 .keys{
   margin-top:30px;
@@ -173,117 +287,8 @@ select{
 
 
 /* =========================
-   코드 진행 버튼
+   모바일
 ========================= */
-
-.progressionButtonWrap{
-  display:flex;
-  justify-content:center;
-  margin-top:18px
-}
-
-.progressionButton{
-  background:#f0f0f0;
-  color:#111;
-  border:1px solid #ddd;
-  padding:12px 20px;
-  font-size:15px
-}
-
-.progressionButton:hover{
-  background:#e7e7e7
-}
-
-
-/* =========================
-   코드 진행 모달
-========================= */
-
-.progressionModal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:9999
-}
-
-.progressionModal.hidden{
-  display:none
-}
-
-.progressionBox{
-  width:min(680px,94vw);
-  background:#fff;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 15px 50px rgba(0,0,0,.2)
-}
-
-.progressionHeader{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px
-}
-
-.progressionTitle{
-  font-size:20px;
-  font-weight:800
-}
-
-.progressionClose{
-  width:38px;
-  height:38px;
-  padding:0;
-  border-radius:50%;
-  background:#eee;
-  font-size:20px;
-  line-height:38px
-}
-
-
-/* =========================
-   코드 진행표
-========================= */
-
-.progressionGrid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px
-}
-
-.progressionCell{
-  min-height:58px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:8px 5px;
-  font-size:15px;
-  font-weight:700;
-  background:#fafafa;
-  white-space:nowrap
-}
-
-.progressionCell .barNumber{
-  color:#999;
-  font-size:10px;
-  margin-right:5px;
-  font-weight:400
-}
-
-.progressionKey{
-  color:#777;
-  font-size:13px;
-  margin-top:15px;
-  text-align:center
-}
-
 
 @media(max-width:600px){
 
@@ -299,8 +304,8 @@ select{
     padding:25px
   }
 
-  .progressionBox{
-    padding:20px
+  .progressionArea{
+    padding:14px
   }
 
   .progressionGrid{
@@ -308,16 +313,18 @@ select{
   }
 
   .progressionCell{
-    min-height:52px;
-    font-size:13px;
-    padding:6px 3px
+    min-height:50px;
+    font-size:12px;
+    padding:5px 2px
   }
 
-  .progressionCell .barNumber{
+  .barNumber{
     font-size:9px;
     margin-right:3px
   }
+
 }
+
 </style>
 </head>
 
@@ -363,7 +370,7 @@ C
 </div>
 
 
-<!-- 코드 진행 보기 버튼 -->
+<!-- 코드 진행 버튼 -->
 
 <div class="progressionButtonWrap">
 
@@ -376,6 +383,44 @@ C
 
 </div>
 
+
+<!-- 코드 진행표 -->
+
+<div
+  class="progressionArea hidden"
+  id="progressionArea"
+>
+
+<div class="progressionHeader">
+
+<div class="progressionTitle">
+코드 진행 · <span id="progressionKey">C</span>
+</div>
+
+<button
+  class="progressionClose"
+  id="progressionClose"
+>
+닫기
+</button>
+
+</div>
+
+
+<div
+  class="progressionGrid"
+  id="progressionGrid"
+></div>
+
+
+<div class="progressionInfo">
+12 Bar Blues
+</div>
+
+</div>
+
+
+<!-- 설정 -->
 
 <div class="settings">
 
@@ -392,7 +437,13 @@ C
 >
 
 <div class="value">
-<span id="tempoValue">120</span> BPM
+
+<span id="tempoValue">
+120
+</span>
+
+BPM
+
 </div>
 
 </div>
@@ -416,18 +467,30 @@ C
 </div>
 
 
+<!-- 진행바 -->
+
 <div class="progress">
 
-<div class="bar" id="bar"></div>
+<div
+  class="bar"
+  id="bar"
+></div>
 
 </div>
 
 
+<!-- KEY 선택 -->
+
 <div class="keys">
 
-<h2>직접 KEY 선택</h2>
+<h2>
+직접 KEY 선택
+</h2>
 
-<div class="keygrid" id="keygrid"></div>
+<div
+  class="keygrid"
+  id="keygrid"
+></div>
 
 </div>
 
@@ -435,6 +498,7 @@ C
 <div class="note">
 
 12개 KEY의 블루스 반주가 내장되어 있습니다.<br>
+
 음원은 제공받은 6개 원본을 기준으로 나머지 KEY를 트랜스포즈했습니다.
 
 </div>
@@ -442,74 +506,45 @@ C
 </div>
 
 
-<!-- =========================
-     코드 진행 모달
-========================= -->
-
-<div
-  class="progressionModal hidden"
-  id="progressionModal"
->
-
-<div class="progressionBox">
-
-<div class="progressionHeader">
-
-<div class="progressionTitle">
-코드 진행 · <span id="progressionKey">C</span>
-</div>
-
-<button
-  class="progressionClose"
-  id="progressionClose"
->
-×
-</button>
-
-</div>
-
-
-<div
-  class="progressionGrid"
-  id="progressionGrid"
-></div>
-
-
-<div class="progressionKey">
-12 Bar Blues
-</div>
-
-</div>
-
-</div>
-
-
-
 <script>
 
 
-/* =========================================
-   기존 음원 데이터
-   ※ 기존 코드 그대로 유지
-========================================= */
+/* =====================================
+   기존 음원
+   ※ 절대 수정하지 않음
+===================================== */
 
 const AUDIO_DATA = {
+
   "C":"audio/C.mp3",
+
   "Db":"audio/Db.mp3",
+
   "D":"audio/D.mp3",
+
   "Eb":"audio/Eb.mp3",
+
   "E":"audio/E.mp3",
+
   "F":"audio/F.mp3",
+
   "Gb":"audio/Gb.mp3",
+
   "G":"audio/G.mp3",
+
   "Ab":"audio/Ab.mp3",
+
   "A":"audio/A.mp3",
+
   "Bb":"audio/Bb.mp3",
+
   "B":"audio/B.mp3"
+
 };
 
 
 const KEYS = [
+
   "C",
   "Db",
   "D",
@@ -522,233 +557,310 @@ const KEYS = [
   "A",
   "Bb",
   "B"
+
 ];
 
 
 let current=0;
+
 let audio=null;
+
 let raf=null;
+
 let count=0;
 
 
-/* =========================================
-   코드 진행
-========================================= */
+/* =====================================
+   12 KEY 코드 진행
+===================================== */
 
 const PROGRESSIONS = {
 
-  "C":[
-    "C7",
-    "F7",
-    "C7",
-    "Gm7  C7",
-    "F7",
-    "F7",
-    "C7",
-    "Am7  D7",
-    "Dm7",
-    "G7",
-    "C7  A7",
-    "Dm7  G7"
-  ],
 
-  "Db":[
-    "Db7",
-    "Gb7",
-    "Db7",
-    "Abm7  Db7",
-    "Gb7",
-    "Gb7",
-    "Db7",
-    "Bbm7  Eb7",
-    "Ebm7",
-    "Ab7",
-    "Db7  Bb7",
-    "Ebm7  Ab7"
-  ],
+"C":[
 
-  "D":[
-    "D7",
-    "G7",
-    "D7",
-    "Am7  D7",
-    "G7",
-    "G7",
-    "D7",
-    "Bm7  E7",
-    "Em7",
-    "A7",
-    "D7  B7",
-    "Em7  A7"
-  ],
+  "C7",
+  "F7",
+  "C7",
+  "Gm7  C7",
 
-  "Eb":[
-    "Eb7",
-    "Ab7",
-    "Eb7",
-    "Bbm7  Eb7",
-    "Ab7",
-    "Ab7",
-    "Eb7",
-    "Cm7  F7",
-    "Fm7",
-    "Bb7",
-    "Eb7  C7",
-    "Fm7  Bb7"
-  ],
+  "F7",
+  "F7",
+  "C7",
+  "Am7  D7",
 
-  "E":[
-    "E7",
-    "A7",
-    "E7",
-    "Bm7  E7",
-    "A7",
-    "A7",
-    "E7",
-    "C#m7  F#7",
-    "F#m7",
-    "B7",
-    "E7  C#7",
-    "F#m7  B7"
-  ],
+  "Dm7",
+  "G7",
+  "C7  A7",
+  "Dm7  G7"
 
-  "F":[
-    "F7",
-    "Bb7",
-    "F7",
-    "Cm7  F7",
-    "Bb7",
-    "Bb7",
-    "F7",
-    "Am7  D7",
-    "Gm7",
-    "C7",
-    "F7  D7",
-    "Gm7  C7"
-  ],
+],
 
-  "Gb":[
-    "Gb7",
-    "Cb7",
-    "Gb7",
-    "Dbm7  Gb7",
-    "Cb7",
-    "Cb7",
-    "Gb7",
-    "Ebm7  Ab7",
-    "Abm7",
-    "Db7",
-    "Gb7  Eb7",
-    "Abm7  Db7"
-  ],
 
-  "G":[
-    "G7",
-    "C7",
-    "G7",
-    "Dm7  G7",
-    "C7",
-    "C7",
-    "G7",
-    "Em7  A7",
-    "Am7",
-    "D7",
-    "G7  E7",
-    "Am7  D7"
-  ],
+"Db":[
 
-  "Ab":[
-    "Ab7",
-    "Db7",
-    "Ab7",
-    "Ebm7  Ab7",
-    "Db7",
-    "Db7",
-    "Ab7",
-    "Fm7  Bb7",
-    "Bbm7",
-    "Eb7",
-    "Ab7  F7",
-    "Bbm7  Eb7"
-  ],
+  "Db7",
+  "Gb7",
+  "Db7",
+  "Abm7  Db7",
 
-  "A":[
-    "A7",
-    "D7",
-    "A7",
-    "Em7  A7",
-    "D7",
-    "D7",
-    "A7",
-    "F#m7  B7",
-    "Bm7",
-    "E7",
-    "A7  F#7",
-    "Bm7  E7"
-  ],
+  "Gb7",
+  "Gb7",
+  "Db7",
+  "Bbm7  Eb7",
 
-  "Bb":[
-    "Bb7",
-    "Eb7",
-    "Bb7",
-    "Fm7  Bb7",
-    "Eb7",
-    "Eb7",
-    "Bb7",
-    "Gm7  C7",
-    "Cm7",
-    "F7",
-    "Bb7  G7",
-    "Cm7  F7"
-  ],
+  "Ebm7",
+  "Ab7",
+  "Db7  Bb7",
+  "Ebm7  Ab7"
 
-  "B":[
-    "B7",
-    "E7",
-    "B7",
-    "F#m7  B7",
-    "E7",
-    "E7",
-    "B7",
-    "G#m7  C#7",
-    "C#m7",
-    "F#7",
-    "B7  G#7",
-    "C#m7  F#7"
-  ]
+],
+
+
+"D":[
+
+  "D7",
+  "G7",
+  "D7",
+  "Am7  D7",
+
+  "G7",
+  "G7",
+  "D7",
+  "Bm7  E7",
+
+  "Em7",
+  "A7",
+  "D7  B7",
+  "Em7  A7"
+
+],
+
+
+"Eb":[
+
+  "Eb7",
+  "Ab7",
+  "Eb7",
+  "Bbm7  Eb7",
+
+  "Ab7",
+  "Ab7",
+  "Eb7",
+  "Cm7  F7",
+
+  "Fm7",
+  "Bb7",
+  "Eb7  C7",
+  "Fm7  Bb7"
+
+],
+
+
+"E":[
+
+  "E7",
+  "A7",
+  "E7",
+  "Bm7  E7",
+
+  "A7",
+  "A7",
+  "E7",
+  "C#m7  F#7",
+
+  "F#m7",
+  "B7",
+  "E7  C#7",
+  "F#m7  B7"
+
+],
+
+
+"F":[
+
+  "F7",
+  "Bb7",
+  "F7",
+  "Cm7  F7",
+
+  "Bb7",
+  "Bb7",
+  "F7",
+  "Am7  D7",
+
+  "Gm7",
+  "C7",
+  "F7  D7",
+  "Gm7  C7"
+
+],
+
+
+"Gb":[
+
+  "Gb7",
+  "Cb7",
+  "Gb7",
+  "Dbm7  Gb7",
+
+  "Cb7",
+  "Cb7",
+  "Gb7",
+  "Ebm7  Ab7",
+
+  "Abm7",
+  "Db7",
+  "Gb7  Eb7",
+  "Abm7  Db7"
+
+],
+
+
+"G":[
+
+  "G7",
+  "C7",
+  "G7",
+  "Dm7  G7",
+
+  "C7",
+  "C7",
+  "G7",
+  "Em7  A7",
+
+  "Am7",
+  "D7",
+  "G7  E7",
+  "Am7  D7"
+
+],
+
+
+"Ab":[
+
+  "Ab7",
+  "Db7",
+  "Ab7",
+  "Ebm7  Ab7",
+
+  "Db7",
+  "Db7",
+  "Ab7",
+  "Fm7  Bb7",
+
+  "Bbm7",
+  "Eb7",
+  "Ab7  F7",
+  "Bbm7  Eb7"
+
+],
+
+
+"A":[
+
+  "A7",
+  "D7",
+  "A7",
+  "Em7  A7",
+
+  "D7",
+  "D7",
+  "A7",
+  "F#m7  B7",
+
+  "Bm7",
+  "E7",
+  "A7  F#7",
+  "Bm7  E7"
+
+],
+
+
+"Bb":[
+
+  "Bb7",
+  "Eb7",
+  "Bb7",
+  "Fm7  Bb7",
+
+  "Eb7",
+  "Eb7",
+  "Bb7",
+  "Gm7  C7",
+
+  "Cm7",
+  "F7",
+  "Bb7  G7",
+  "Cm7  F7"
+
+],
+
+
+"B":[
+
+  "B7",
+  "E7",
+  "B7",
+  "F#m7  B7",
+
+  "E7",
+  "E7",
+  "B7",
+  "G#m7  C#7",
+
+  "C#m7",
+  "F#7",
+  "B7  G#7",
+  "C#m7  F#7"
+
+]
 
 };
 
 
-/* =========================================
-   기존 DOM
-========================================= */
+/* =====================================
+   DOM
+===================================== */
 
-const keyEl=document.getElementById("key");
-const statusEl=document.getElementById("status");
+const keyEl=
+  document.getElementById("key");
 
-const playBtn=document.getElementById("play");
-const stopBtn=document.getElementById("stop");
-const randomBtn=document.getElementById("random");
+const statusEl=
+  document.getElementById("status");
 
-const tempo=document.getElementById("tempo");
-const tempoValue=document.getElementById("tempoValue");
+const playBtn=
+  document.getElementById("play");
 
-const loops=document.getElementById("loops");
-const bar=document.getElementById("bar");
+const stopBtn=
+  document.getElementById("stop");
 
-const keygrid=document.getElementById("keygrid");
+const randomBtn=
+  document.getElementById("random");
+
+const tempo=
+  document.getElementById("tempo");
+
+const tempoValue=
+  document.getElementById("tempoValue");
+
+const loops=
+  document.getElementById("loops");
+
+const bar=
+  document.getElementById("bar");
+
+const keygrid=
+  document.getElementById("keygrid");
 
 
-/* =========================================
-   코드 진행 DOM
-========================================= */
+/* 코드 진행 DOM */
 
 const progressionBtn=
   document.getElementById("progressionBtn");
 
-const progressionModal=
-  document.getElementById("progressionModal");
+const progressionArea=
+  document.getElementById("progressionArea");
 
 const progressionClose=
   document.getElementById("progressionClose");
@@ -760,48 +872,59 @@ const progressionKey=
   document.getElementById("progressionKey");
 
 
-/* =========================================
+/* =====================================
    KEY 버튼 생성
-========================================= */
+===================================== */
 
 KEYS.forEach((k,i)=>{
 
-  const b=document.createElement("button");
+  const b=
+    document.createElement("button");
 
   b.className="keybtn";
 
   b.textContent=k;
 
-  b.onclick=()=>selectKey(i);
+  b.onclick=
+    ()=>selectKey(i);
 
   keygrid.appendChild(b);
 
 });
 
 
-/* =========================================
+/* =====================================
    코드 진행 표시
-========================================= */
+===================================== */
 
 function renderProgression(){
 
-  const key=KEYS[current];
+  const key=
+    KEYS[current];
 
-  const progression=PROGRESSIONS[key];
+  const progression=
+    PROGRESSIONS[key];
 
   progressionGrid.innerHTML="";
 
   progressionKey.textContent=key;
 
+
   progression.forEach((chord,index)=>{
 
-    const cell=document.createElement("div");
+    const cell=
+      document.createElement("div");
 
-    cell.className="progressionCell";
+    cell.className=
+      "progressionCell";
+
 
     cell.innerHTML=
-      `<span class="barNumber">${index+1}</span>
-       ${chord}`;
+      `<span class="barNumber">
+        ${index+1}
+      </span>
+      ${chord}`;
+
 
     progressionGrid.appendChild(cell);
 
@@ -810,26 +933,35 @@ function renderProgression(){
 }
 
 
-/* =========================================
+/* =====================================
    UI 업데이트
-========================================= */
+===================================== */
 
 function updateUI(){
 
-  keyEl.textContent=KEYS[current];
+  keyEl.textContent=
+    KEYS[current];
 
-  [...keygrid.children].forEach((b,i)=>
-    b.classList.toggle("active",i===current)
+
+  [...keygrid.children].forEach(
+    (b,i)=>
+      b.classList.toggle(
+        "active",
+        i===current
+      )
   );
+
+
+  /* KEY가 바뀌면 코드 진행도 변경 */
 
   renderProgression();
 
 }
 
 
-/* =========================================
+/* =====================================
    KEY 선택
-========================================= */
+===================================== */
 
 function selectKey(i){
 
@@ -840,50 +972,63 @@ function selectKey(i){
   updateUI();
 
   statusEl.textContent=
-    KEYS[current]+" Key · 재생 준비 완료";
+    KEYS[current]+
+    " Key · 재생 준비 완료";
+
 }
 
 
-/* =========================================
+/* =====================================
    랜덤 KEY
-========================================= */
+===================================== */
 
 function randomKey(){
 
   stopAudio();
 
+
   let n=
-    Math.floor(Math.random()*KEYS.length);
+    Math.floor(
+      Math.random()*KEYS.length
+    );
+
 
   if(n===current)
     n=(n+1)%KEYS.length;
+
 
   current=n;
 
   updateUI();
 
   playAudio();
+
 }
 
 
-/* =========================================
+/* =====================================
    TEMPO
-========================================= */
+===================================== */
 
 tempo.oninput=()=>{
 
-  tempoValue.textContent=tempo.value;
+  tempoValue.textContent=
+    tempo.value;
 
-  if(audio)
+
+  if(audio){
+
     audio.playbackRate=
       Number(tempo.value)/120;
+
+  }
 
 };
 
 
-/* =========================================
+/* =====================================
    AUDIO 정지
-========================================= */
+===================================== */
 
 function stopAudio(){
 
@@ -897,10 +1042,13 @@ function stopAudio(){
 
   }
 
+
   if(raf)
     cancelAnimationFrame(raf);
 
+
   bar.style.width="0%";
+
 
   playBtn.disabled=false;
 
@@ -911,20 +1059,27 @@ function stopAudio(){
 }
 
 
-/* =========================================
+/* =====================================
    AUDIO 재생
-========================================= */
+===================================== */
 
 function playAudio(){
 
   stopAudio();
 
-  const data=
-    AUDIO_DATA[KEYS[current]];
 
-  audio=new Audio(data);
+  const data=
+    AUDIO_DATA[
+      KEYS[current]
+    ];
+
+
+  audio=
+    new Audio(data);
+
 
   audio.preload="auto";
+
 
   audio.preservesPitch=true;
 
@@ -932,8 +1087,10 @@ function playAudio(){
 
   audio.webkitPreservesPitch=true;
 
+
   audio.playbackRate=
     Number(tempo.value)/120;
+
 
   count=0;
 
@@ -943,11 +1100,13 @@ function playAudio(){
     statusEl.textContent=
       `${KEYS[current]} Key · ${tempo.value} BPM · 재생 중`;
 
+
     playBtn.disabled=true;
 
     stopBtn.disabled=false;
 
     randomBtn.disabled=true;
+
 
     audio.play();
 
@@ -960,7 +1119,11 @@ function playAudio(){
 
     count++;
 
-    if(count<Number(loops.value)){
+
+    if(
+      count<
+      Number(loops.value)
+    ){
 
       audio.currentTime=0;
 
@@ -990,67 +1153,92 @@ function playAudio(){
 }
 
 
-/* =========================================
-   재생 진행바
-========================================= */
+/* =====================================
+   진행바
+===================================== */
 
 function updateProgress(){
 
-  if(!audio || audio.paused)
+  if(
+    !audio ||
+    audio.paused
+  )
     return;
+
 
   const p=
     audio.duration ?
     audio.currentTime/audio.duration :
     0;
 
+
   bar.style.width=
     (p*100)+"%";
 
+
   raf=
-    requestAnimationFrame(updateProgress);
+    requestAnimationFrame(
+      updateProgress
+    );
 
 }
 
 
-/* =========================================
-   코드 진행창 열기 / 닫기
-========================================= */
+/* =====================================
+   코드 진행 열기 / 닫기
+===================================== */
 
 progressionBtn.onclick=()=>{
 
-  renderProgression();
-
-  progressionModal.classList.remove("hidden");
-
-};
-
-
-progressionClose.onclick=()=>{
-
-  progressionModal.classList.add("hidden");
-
-};
+  const isHidden=
+    progressionArea.classList.contains(
+      "hidden"
+    );
 
 
-/* 배경 클릭 시 닫기 */
+  if(isHidden){
 
-progressionModal.onclick=(e)=>{
+    renderProgression();
 
-  if(e.target===progressionModal){
+    progressionArea.classList.remove(
+      "hidden"
+    );
 
-    progressionModal.classList.add("hidden");
+    progressionBtn.textContent=
+      "🎼 코드 진행 닫기";
+
+  }else{
+
+    progressionArea.classList.add(
+      "hidden"
+    );
+
+    progressionBtn.textContent=
+      "🎼 코드 진행 보기";
 
   }
 
 };
 
 
-/* =========================================
-   기존 버튼
-========================================= */
+progressionClose.onclick=()=>{
 
-playBtn.onclick=playAudio;
+  progressionArea.classList.add(
+    "hidden"
+  );
+
+  progressionBtn.textContent=
+    "🎼 코드 진행 보기";
+
+};
+
+
+/* =====================================
+   기존 버튼
+===================================== */
+
+playBtn.onclick=
+  playAudio;
 
 
 stopBtn.onclick=()=>{
@@ -1058,17 +1246,19 @@ stopBtn.onclick=()=>{
   stopAudio();
 
   statusEl.textContent=
-    KEYS[current]+" Key · 정지";
+    KEYS[current]+
+    " Key · 정지";
 
 };
 
 
-randomBtn.onclick=randomKey;
+randomBtn.onclick=
+  randomKey;
 
 
-/* =========================================
+/* =====================================
    초기화
-========================================= */
+===================================== */
 
 updateUI();
 
